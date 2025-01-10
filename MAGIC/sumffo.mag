@@ -1,0 +1,12 @@
+magic
+tech scmos
+timestamp 1731956397
+<< metal1 >>
+rect -3 94 -2 97
+rect 110 59 113 62
+rect -3 40 -2 43
+use xor  xor_0
+timestamp 1618605809
+transform 1 0 51 0 1 80
+box -53 -56 59 49
+<< end >>

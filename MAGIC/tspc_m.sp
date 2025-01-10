@@ -1,0 +1,80 @@
+*2023112027_ritama_sanyal
+.include TSMC_180nm.txt
+.param SUPPLY=1.8V
+.option scale=0.09u
+.global gnd vdd
+Vdd vdd gnd 'SUPPLY'
+
+vd clk gnd 1.8 pulse 0 1.8 0ns 0ns 0ns 10ns 20ns
+vd2 d gnd 1.8 pulse 0 1.8 5ns 0ns 0ns 20ns 40ns
+* SPICE3 file created from tspc.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 a clk a_n8_2# w_n12_n47#  cmosp w=22 l=2
++  ad=396 pd=80 as=762 ps=158
+M1001 b clk vdd w_99_6#  cmosp w=12 l=2
++  ad=216 pd=60 as=828 ps=228
+M1002 output o1 vdd w_262_n14#  cmosp w=12 l=2
++  ad=180 pd=54 as=0 ps=0
+M1003 o1 clk a_186_n62# Gnd  cmosn w=12 l=2
++  ad=252 pd=66 as=540 ps=138
+M1004 a_186_n62# b gnd Gnd  cmosn w=12 l=2
++  ad=0 pd=0 as=480 ps=176
+M1005 o1 b vdd w_182_n5#  cmosp w=12 l=2
++  ad=216 pd=60 as=0 ps=0
+M1006 a_n8_2# d vdd w_n32_n5#  cmosp w=24 l=2
++  ad=0 pd=0 as=0 ps=0
+M1007 a_103_n62# clk gnd Gnd  cmosn w=12 l=2
++  ad=468 pd=126 as=0 ps=0
+M1008 b a a_103_n62# Gnd  cmosn w=12 l=2
++  ad=300 pd=74 as=0 ps=0
+M1009 output o1 gnd Gnd  cmosn w=6 l=2
++  ad=162 pd=66 as=0 ps=0
+M1010 a d gnd Gnd  cmosn w=6 l=2
++  ad=150 pd=62 as=0 ps=0
+C0 o1 output 0.04fF
+C1 output w_262_n14# 0.08fF
+C2 o1 w_262_n14# 0.12fF
+C3 w_182_n5# vdd 0.03fF
+C4 w_99_6# vdd 0.03fF
+C5 w_99_6# clk 0.09fF
+C6 o1 w_182_n5# 0.03fF
+C7 clk d 0.03fF
+C8 w_n12_n47# a_n8_2# 0.03fF
+C9 b w_182_n5# 0.09fF
+C10 w_n12_n47# clk 0.08fF
+C11 output gnd 0.02fF
+C12 b w_99_6# 0.03fF
+C13 clk a_186_n62# 0.05fF
+C14 w_n32_n5# d 0.11fF
+C15 w_n12_n47# a 0.04fF
+C16 a clk 0.08fF
+C17 w_n32_n5# a_n8_2# 0.03fF
+C18 w_n32_n5# vdd 0.05fF
+C19 w_262_n14# vdd 0.02fF
+C20 gnd Gnd 1.99fF
+C21 a_186_n62# Gnd 0.10fF
+C22 clk Gnd 1.10fF
+C23 a_103_n62# Gnd 0.10fF
+C24 output Gnd 0.24fF
+C25 a Gnd 0.68fF
+C26 o1 Gnd 0.60fF
+C27 b Gnd 0.08fF
+C28 a_n8_2# Gnd 0.04fF
+C29 vdd Gnd 1.92fF
+C30 d Gnd 0.76fF
+C31 w_262_n14# Gnd 1.22fF
+C32 w_n12_n47# Gnd 0.87fF
+C33 w_182_n5# Gnd 1.33fF
+C34 w_99_6# Gnd 1.33fF
+C35 w_n32_n5# Gnd 2.15fF
+
+ 
+.tran 0.1n 200n
+.control
+run
+plot v(clk) v(d)+2 4+v(output)
+.endc
+
+.end
